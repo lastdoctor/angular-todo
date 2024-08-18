@@ -4,7 +4,7 @@ import { HeaderComponent } from './header/header.component';
 import { UserComponent } from './user/user.component';
 import { faker } from '@faker-js/faker';
 import { ContentComponent } from './content/content.component';
-import { User } from './user/user.interface';
+import { UserInterface } from './user/user.interface';
 
 @Component({
   selector: 'app-root',
@@ -14,8 +14,8 @@ import { User } from './user/user.interface';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  users = computed<User[]>(() => this.getUsers(10));
-  selectedUser = signal<User>({ avatarUrl: '', id: '', name: '' });
+  users = computed<UserInterface[]>(() => this.getUsers(10));
+  selectedUser = signal<UserInterface>({ avatarUrl: '', id: '', name: '' });
 
   onSelectUser(name: string) {
     const user = this.users().find((user) => user.name === name);
@@ -33,7 +33,7 @@ export class AppComponent {
     }
     return users;
   }
-  private getUser(): User {
+  private getUser(): UserInterface {
     return {
       id: crypto.randomUUID(),
       name: faker.person.fullName(),

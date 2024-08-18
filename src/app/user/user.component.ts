@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, input, Output } from '@angular/core';
-import { User } from './user.interface';
+import { UserInterface } from './user.interface';
 
 @Component({
   selector: 'app-user',
@@ -11,7 +11,7 @@ import { User } from './user.interface';
 export class UserComponent {
   @Input({ required: true }) name!: string;
   avatarUrl = input.required<string>();
-  @Output() customSelect = new EventEmitter<User['name']>();
+  @Output() customSelect = new EventEmitter<UserInterface['name']>();
 
   onSelectUser() {
     this.customSelect.emit(this.name);
